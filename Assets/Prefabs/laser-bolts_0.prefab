@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1921481277640518378}
   - component: {fileID: 7020459953375567980}
   - component: {fileID: 8783494091067939962}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: laser-bolts_0
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

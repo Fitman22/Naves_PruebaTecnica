@@ -20,13 +20,14 @@ public class SmallEnemy : MonoBehaviour
         yield return new WaitForSeconds(timeShoot);
         GameObject bulletinst = Instantiate(bullet,output.position,output.rotation);
         bulletinst.GetComponent<Rigidbody2D>().linearVelocityY=-speedBullet;
+        Destroy(bulletinst,8f);
          StartCoroutine(shoot());
     }
      IEnumerator Move(){
         moveX=true;
         rb.linearVelocityY=0;
-        newPosition= new Vector3(transform.position.x+(Random.Range(-3,3)),transform.position.y,0);
-        yield return new WaitForSeconds(Random.Range(10f,55f));
+        newPosition= new Vector3(transform.position.x+(Random.Range(-3, 3)),transform.position.y,0);
+        yield return new WaitForSeconds(Random.Range(5f,25f));
           StartCoroutine(Move());
     }
     void Update()
