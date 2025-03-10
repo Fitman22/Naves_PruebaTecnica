@@ -517,6 +517,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuController
       objectReference: {fileID: 0}
+    - target: {fileID: 3711206902279616125, guid: a2f7bfe29ca6b0742a8ebb044b1135ea, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 49.6
+      objectReference: {fileID: 0}
     - target: {fileID: 6538482236260478839, guid: a2f7bfe29ca6b0742a8ebb044b1135ea, type: 3}
       propertyPath: m_LocalPosition.x
       value: 916.65686
