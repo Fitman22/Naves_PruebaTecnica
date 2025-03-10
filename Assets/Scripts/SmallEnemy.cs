@@ -31,7 +31,7 @@ public class SamllEnemy : MonoBehaviour
         rb.linearVelocityY=0;
         newPosition= new Vector3(transform.position.x+(Random.Range(-3, 3)),transform.position.y,0);
         newPosition.x=Mathf.Clamp(newPosition.x,-8f,8f);
-        yield return new WaitForSeconds(Random.Range(9f,29f));
+        yield return new WaitForSeconds(Random.Range(4f,20f));
         StartCoroutine(Move());
     }
     void Update()
