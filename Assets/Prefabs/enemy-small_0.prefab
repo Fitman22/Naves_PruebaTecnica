@@ -141,7 +141,7 @@ MonoBehaviour:
   timeShoot: 3.5
   speedBullet: 6
   speedX: 4
-  speedY: 0.5
+  speedY: 0.7
   output: {fileID: 7058187546229263856}
 --- !u!50 &7520345257734192359
 Rigidbody2D:

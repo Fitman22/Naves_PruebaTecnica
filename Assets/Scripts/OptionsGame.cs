@@ -18,8 +18,11 @@ public class OptionsGame : MonoBehaviour
         Time.timeScale = IsPause ? 0f:1f;
     }
     public void Lose(){
-
-        loseMenu.SetActive(true);
+        Invoke("loseActive",2f);
+    }
+    void loseActive()
+    {
+          loseMenu.SetActive(true);
         ScoreController.instance.SaveScore();
         pause(true);
     }
