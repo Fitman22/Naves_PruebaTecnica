@@ -17,9 +17,10 @@ public class SpawnEnemy : MonoBehaviour
         StartCoroutine( spawnEnemy());
     }
    IEnumerator spawnEnemy(){
-    yield return new WaitForSeconds(timeSpawn);
+    
     Vector2 pos=new Vector2(Random.Range(posMin.position.x,posMax.position.x),Random.Range(posMin.position.y,posMax.position.y));
     GameObject enemy= Instantiate(randomEnemy(),pos,transform.rotation);
+    yield return new WaitForSeconds(timeSpawn);
     StartCoroutine( spawnEnemy());
    }
    GameObject randomEnemy(){

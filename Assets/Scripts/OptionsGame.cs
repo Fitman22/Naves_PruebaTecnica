@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class OptionsGame : MonoBehaviour
@@ -19,6 +20,7 @@ public class OptionsGame : MonoBehaviour
     public void Lose(){
 
         loseMenu.SetActive(true);
+        ScoreController.instance.SaveScore();
         pause(true);
     }
 }
