@@ -4,23 +4,36 @@ using UnityEngine;
 public class BigEnemy : MonoBehaviour
 {
   [SerializeField] GameObject bullet;
-  Rigidbody2D rb;
-  [SerializeField] float timeShoot,speedBullet,speedX,speedY,timeVanish;
+  [SerializeField] float timeShoot,speedBullet,timeVanish;
   [SerializeField] Transform output;
-  SpriteRenderer sprite;
   [SerializeField] Vector2 LimitMin,LimitMax;
-  bool moveX;
-  Vector3 newPosition;
+  [SerializeField]Animator anim;
+  bool canShoot;
     void Start()
     {
-        rb=GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
-
+     StartCoroutine(Vanish());
+      StartCoroutine(shoot());
     }
-   void Vanish(){
-    
+   IEnumerator Vanish(){
+      anim.Play("Vanish");
+      canShoot=false;
+      yield return new WaitForSeconds(timeVanish);
+      Vector2 newPosition= new Vector2(Random.Range(LimitMin.x,LimitMax.x),Random.Range(LimitMin.y,LimitMax.y));
+      transform.position=newPosition;
+      anim.Play("InVanish");  
+      canShoot=true;
+      yield return new WaitForSeconds(Random.Range(3f,10f));
+      StartCoroutine(Vanish());
    }
-    void Teleport(){
-
+  IEnumerator shoot(){
+        yield return new WaitForSeconds(timeShoot);
+        if(canShoot){
+        GameObject bulletinst = Instantiate(bullet,output.position,output.rotation);
+        Vector2 posTarget= GameObject.FindGameObjectWithTag("Player").transform.position;
+        Vector2 target = ((Vector2)transform.position-posTarget).normalized;
+        bulletinst.GetComponent<Rigidbody2D>().linearVelocity=target*-speedBullet;
+        Destroy(bulletinst,7f);
+        }
+        StartCoroutine(shoot());
     }
 }

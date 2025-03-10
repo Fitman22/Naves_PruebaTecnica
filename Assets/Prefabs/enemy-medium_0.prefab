@@ -239,7 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 106949706431532856, guid: f99db017fdb10fe4cb76355c157bd7e6, type: 3}
   timeShoot: 3
-  speedBullet: 5
-  speedX: 4
+  speedBullet: 7
+  speedX: 5
   speedY: 1
   output: {fileID: 2939494373573639569}

@@ -17,6 +17,8 @@ public class OptionsGame : MonoBehaviour
         Time.timeScale = IsPause ? 0f:1f;
     }
     public void Lose(){
+
         loseMenu.SetActive(true);
+        pause(true);
     }
 }

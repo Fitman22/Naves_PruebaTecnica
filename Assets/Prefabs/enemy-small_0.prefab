@@ -137,10 +137,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 106949706431532856, guid: f99db017fdb10fe4cb76355c157bd7e6, type: 3}
-  timeShoot: 4
+  timeShoot: 3.5
   speedBullet: 6
   speedX: 4
-  speedY: 0.3
+  speedY: 0.5
   output: {fileID: 7058187546229263856}
 --- !u!50 &7520345257734192359
 Rigidbody2D:
