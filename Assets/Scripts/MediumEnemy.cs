@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class SamllEnemy : MonoBehaviour
+public class MediumEnemy : MonoBehaviour
 {
   [SerializeField] GameObject bullet;
   Rigidbody2D rb;
@@ -14,36 +14,28 @@ public class SamllEnemy : MonoBehaviour
         rb=GetComponent<Rigidbody2D>();
         rb.linearVelocityY=-speedY;
         StartCoroutine(shoot());
-        StartCoroutine(Move());
+          Move();
     }
     IEnumerator shoot(){
         yield return new WaitForSeconds(timeShoot);
         GameObject bulletinst = Instantiate(bullet,output.position,output.rotation);
         bulletinst.GetComponent<Rigidbody2D>().linearVelocityY=-speedBullet;
         Destroy(bulletinst,8f);
-        StartCoroutine(shoot());
+         StartCoroutine(shoot());
     }
-     IEnumerator Move(){
-        moveX=true;
-        rb.linearVelocityY=0;
-        newPosition= new Vector3(transform.position.x+(Random.Range(-3, 3)),transform.position.y,0);
-        newPosition.x=Mathf.Clamp(newPosition.x,-8f,8f);
-        yield return new WaitForSeconds(Random.Range(9f,29f));
-        StartCoroutine(Move());
-    }
+     void Move(){
+        newPosition= new Vector3(transform.position.x+(Random.Range(-7, 7)),transform.position.y-speedY,0);
+        newPosition.x=Mathf.Clamp(newPosition.x,-7.4f,7.4f);
+     }
     void Update()
     {
-        if(moveX){
-            if(Vector2.Distance(newPosition,transform.position)>0.1){
+            if(Vector2.Distance(newPosition,transform.position)>0.2){
                 Vector2 position = Vector2.MoveTowards(rb.position,newPosition , speedX * Time.deltaTime);
-                
                 rb.MovePosition(position);
             }
             else{
-                moveX=false;
-                rb.linearVelocityY=-speedY;
+                 Move();
             }
-        }
     }
 
 }
