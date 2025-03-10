@@ -8,9 +8,11 @@ public class BigEnemy : MonoBehaviour
   [SerializeField] Transform output;
   [SerializeField] Vector2 LimitMin,LimitMax;
   [SerializeField]Animator anim;
+    AudioSource sound;
   bool canShoot;
     void Start()
     {
+       sound=GetComponent<AudioSource>();
      StartCoroutine(Vanish());
       StartCoroutine(shoot());
     }
@@ -32,6 +34,7 @@ public class BigEnemy : MonoBehaviour
         Vector2 posTarget= GameObject.FindGameObjectWithTag("Player").transform.position;
         Vector2 target = ((Vector2)transform.position-posTarget).normalized;
         bulletinst.GetComponent<Rigidbody2D>().linearVelocity=target*-speedBullet;
+        sound.Play();
         Destroy(bulletinst,7f);
         }
         StartCoroutine(shoot());

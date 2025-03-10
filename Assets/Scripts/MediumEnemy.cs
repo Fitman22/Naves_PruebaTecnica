@@ -8,10 +8,12 @@ public class MediumEnemy : MonoBehaviour
   [SerializeField] float timeShoot,speedBullet,speedX,speedY;
   [SerializeField] Transform output;
   bool moveX;
+    AudioSource sound;
   Vector3 newPosition;
     void Start()
     {
         rb=GetComponent<Rigidbody2D>();
+         sound=GetComponent<AudioSource>();
         rb.linearVelocityY=-speedY;
         StartCoroutine(shoot());
           Move();
@@ -20,6 +22,7 @@ public class MediumEnemy : MonoBehaviour
         yield return new WaitForSeconds(timeShoot);
         GameObject bulletinst = Instantiate(bullet,output.position,output.rotation);
         bulletinst.GetComponent<Rigidbody2D>().linearVelocityY=-speedBullet;
+        sound.Play();
         Destroy(bulletinst,8f);
          StartCoroutine(shoot());
     }

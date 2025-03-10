@@ -9,9 +9,11 @@ public class SamllEnemy : MonoBehaviour
   [SerializeField] Transform output;
   bool moveX;
   Vector3 newPosition;
+   AudioSource sound;
     void Start()
     {
         rb=GetComponent<Rigidbody2D>();
+         sound=GetComponent<AudioSource>();
         rb.linearVelocityY=-speedY;
         StartCoroutine(shoot());
         StartCoroutine(Move());
@@ -20,6 +22,7 @@ public class SamllEnemy : MonoBehaviour
         yield return new WaitForSeconds(timeShoot);
         GameObject bulletinst = Instantiate(bullet,output.position,output.rotation);
         bulletinst.GetComponent<Rigidbody2D>().linearVelocityY=-speedBullet;
+        sound.Play();
         Destroy(bulletinst,8f);
         StartCoroutine(shoot());
     }
